@@ -5,19 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
-  <body>
+  <body onload="render()">
     <h1>Todo-Liste</h1>
-    <form onsubmit="addTodo()">
-      <input type="text" placeholder="Neues Todo" id="todoinput">
+    <form onsubmit="addTodo(); return false;">
+      <input type="text" placeholder="Neues Todo" id="todoinput" />
       <button>Hinzufügen</button>
     </form>
 
+    <ul class="todoList"></ul>
+
     <script>
-        let todos = [];
-        function addTodo() {
-            let todoText = todoinput.value;
-            todoinput.value = '';
-        }
+      let todos = [];
+      function addTodo() {
+        let todoText = todoinput.value;
+        todos.push(todoText);
+        todoinput.value = '';
+        render();
+      }
+
+      function render() {
+        todoList.innerHTML = '';
+        todos.forEach(todo => todoList.innerHTML += `<li>${todo}</li>`)
+      }
     </script>
   </body>
 </html>
