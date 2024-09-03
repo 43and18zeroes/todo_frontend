@@ -1,11 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <h1>Todo-Liste</h1>
+    <form onsubmit="addTodo()">
+      <input type="text" placeholder="Neues Todo" id="todoinput">
+      <button>Hinzufügen</button>
+    </form>
+
+    <script>
+        let todos = [];
+        function addTodo() {
+            let todoText = todoinput.value;
+            todoinput.value = '';
+        }
+    </script>
+  </body>
 </html>
