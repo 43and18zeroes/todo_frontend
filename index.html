@@ -15,12 +15,19 @@
     <ul class="todoList"></ul>
 
     <script>
-      let todos = [];
+      let todos = [
+        'Einkaufen'
+      ];
       function addTodo() {
         let todoText = todoinput.value;
         todos.push(todoText);
         todoinput.value = '';
+        save();
         render();
+      }
+
+      save() {
+        
       }
 
       function render() {
