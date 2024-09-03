@@ -18,6 +18,14 @@
       let todos = [
         'Einkaufen'
       ];
+
+      async function loadTodos() {
+        const url = 'http://localhost:3000/todos';
+        let resp = await fetch(url);
+        todos = await resp.json();
+        render(); 
+      }
+
       function addTodo() {
         let todoText = todoinput.value;
         todos.push(todoText);
