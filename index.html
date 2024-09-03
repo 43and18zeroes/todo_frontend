@@ -12,7 +12,7 @@
       <button>Hinzufügen</button>
     </form>
 
-    <ul class="todoList"></ul>
+    <ul id="todoList"></ul>
 
     <script>
       let todos = [
@@ -26,8 +26,11 @@
         render();
       }
 
-      save() {
-        
+      function save() {
+        fetch('http://127.0.0.1.todos', {
+            body: JSON.stringify(todos),
+            method: 'PUT'
+        })
       }
 
       function render() {
