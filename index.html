@@ -17,20 +17,18 @@
     </ul>
 
     <script>
-      let todos = [
-        'Einkaufen'
-      ];
+      let todos = [];
 
       async function loadTodos() {
         const url = 'http://localhost:3000/todos';
         let resp = await fetch(url);
         todos = await resp.json();
-        render(); 
+        render();
       }
 
       function addTodo() {
         let todoText = todoinput.value;
-        todos.push({"title": todoText });
+        todos.push({ title: todoText });
         todoinput.value = '';
         addToServer(todoText);
         render();
@@ -38,15 +36,15 @@
 
       function addToServer(todoText) {
         fetch('http://127.0.0.1.:3000/todos', {
-            body: JSON.stringify({ "title": todoText }),
-            headers: {"content-type": "application/json;charset=utf-8"},
-            method: 'POST'
-        })
+          body: JSON.stringify({ title: todoText }),
+          headers: { 'content-type': 'application/json;charset=utf-8' },
+          method: 'POST',
+        });
       }
 
       function render() {
         todoList.innerHTML = '';
-        todos.forEach(todo => todoList.innerHTML += `<li>${todo.title}</li>`)
+        todos.forEach(todo => (todoList.innerHTML += `<li>${todo.title}</li>`));
       }
     </script>
   </body>
