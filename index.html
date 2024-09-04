@@ -30,7 +30,7 @@
 
       function addTodo() {
         let todoText = todoinput.value;
-        todos.push(todoText);
+        todos.push({"title": todoText });
         todoinput.value = '';
         addToServer(todoText);
         render();
@@ -38,7 +38,8 @@
 
       function addToServer(todoText) {
         fetch('http://127.0.0.1.:3000/todos', {
-            body: JSON.stringify({ "title": todoText}),
+            body: JSON.stringify({ "title": todoText }),
+            headers: {"content-type": "application/json;charset=utf-8"},
             method: 'POST'
         })
       }
