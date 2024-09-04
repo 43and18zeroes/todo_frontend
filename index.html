@@ -28,7 +28,7 @@
 
       function addTodo() {
         let todoText = todoinput.value;
-        todos.push(todoText);
+        todos.push({ "text": todoText });
         todoinput.value = '';
         save();
         render();
