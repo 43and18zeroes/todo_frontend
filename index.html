@@ -47,18 +47,20 @@
         todos.forEach(todo => (todoList.innerHTML += `<li>${todo.title}</li>`));
       }
 
-      fetch('https://api.example.com/data')
-        .then(response => {
-          if (
-            response.headers.get('content-type').includes('application/json')
-          ) {
-            return response.json();
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 5000);
+
+      fetch('https://api.example.com/data', { signal: controller.signal })
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => {
+          if (error.name === 'AbortError') {
+            console.log('Request timed out');
           } else {
-            return response.text();
+            console.error('Error:', error);
           }
         })
-        .then(data => console.log(data))
-        .catch(error => console.error('Error:', error));
+        .finally(() => clearTimeout(timeoutId));
     </script>
   </body>
 </html>
