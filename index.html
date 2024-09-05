@@ -47,13 +47,16 @@
         todos.forEach(todo => (todoList.innerHTML += `<li>${todo.title}</li>`));
       }
 
-      fetch('https://api.example.com/data', {
-        headers: {
-          Authorization: 'Bearer YOUR_TOKEN',
-          'Custom-Header': 'Custom-Value',
-        },
-      })
-        .then(response => response.json())
+      fetch('https://api.example.com/data')
+        .then(response => {
+          if (
+            response.headers.get('content-type').includes('application/json')
+          ) {
+            return response.json();
+          } else {
+            return response.text();
+          }
+        })
         .then(data => console.log(data))
         .catch(error => console.error('Error:', error));
     </script>
