@@ -47,11 +47,12 @@
         todos.forEach(todo => (todoList.innerHTML += `<li>${todo.title}</li>`));
       }
 
-      const params = new URLSearchParams({
-        param1: 'value1',
-        param2: 'value2',
-      });
-      fetch(`https://api.example.com/search?${params}`)
+      fetch('https://api.example.com/data', {
+        headers: {
+          Authorization: 'Bearer YOUR_TOKEN',
+          'Custom-Header': 'Custom-Value',
+        },
+      })
         .then(response => response.json())
         .then(data => console.log(data))
         .catch(error => console.error('Error:', error));
