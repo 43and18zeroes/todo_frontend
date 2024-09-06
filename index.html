@@ -61,9 +61,15 @@
 
       // fetch
 
-      axios
-        .get('https://api.example.com/data')
-        .then(response => console.log(response.data))
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 5000); // Timeout in 5 seconds
+
+      fetch('https://api.example.com/data', { signal: controller.signal })
+        .then(response => response.json())
+        .then(data => {
+          clearTimeout(timeout);
+          console.log(data);
+        })
         .catch(error => console.error('Error:', error));
     </script>
   </body>
