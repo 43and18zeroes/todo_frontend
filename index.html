@@ -61,16 +61,16 @@
 
       // fetch
 
-      const controller = new AbortController();
-      const timeout = setTimeout(() => controller.abort(), 5000); // Timeout in 5 seconds
-
-      fetch('https://api.example.com/data', { signal: controller.signal })
-        .then(response => response.json())
-        .then(data => {
-          clearTimeout(timeout);
+      $.ajax({
+        url: 'https://api.example.com/data',
+        method: 'GET',
+        success: function (data) {
           console.log(data);
-        })
-        .catch(error => console.error('Error:', error));
+        },
+        error: function (error) {
+          console.error('Error:', error);
+        },
+      });
     </script>
   </body>
 </html>
