@@ -61,18 +61,16 @@
 
       // fetch
 
-      const accountSid = 'your-account-sid';
-      const authToken = 'your-auth-token';
+      const token = 'your-access-token';
+      const query = 'Beatles';
 
-      const client = require('twilio')(accountSid, authToken);
-
-      client.messages
-        .create({
-          body: 'Hello from Node.js!',
-          from: '+15017122661',
-          to: '+15558675310',
-        })
-        .then(message => console.log(message.sid))
+      fetch(`https://api.spotify.com/v1/search?q=${query}&type=track`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+        .then(response => response.json())
+        .then(data => console.log(data))
         .catch(error => console.error('Error:', error));
     </script>
   </body>
