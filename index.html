@@ -61,7 +61,12 @@
 
       // fetch
 
-      fetch('https://api.github.com/users/octocat')
+      const apiKey = 'your-api-key';
+      const city = 'London';
+
+      fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`
+      )
         .then(response => response.json())
         .then(data => console.log(data))
         .catch(error => console.error('Error:', error));
