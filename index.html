@@ -62,10 +62,10 @@
       // fetch
 
       const apiKey = 'your-api-key';
-      const city = 'London';
+      const address = '1600+Amphitheatre+Parkway,+Mountain+View,+CA';
 
       fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`
+        `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${apiKey}`
       )
         .then(response => response.json())
         .then(data => console.log(data))
