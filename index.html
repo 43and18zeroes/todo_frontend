@@ -61,14 +61,18 @@
 
       // fetch
 
-      const apiKey = 'your-api-key';
-      const address = '1600+Amphitheatre+Parkway,+Mountain+View,+CA';
+      const accountSid = 'your-account-sid';
+      const authToken = 'your-auth-token';
 
-      fetch(
-        `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${apiKey}`
-      )
-        .then(response => response.json())
-        .then(data => console.log(data))
+      const client = require('twilio')(accountSid, authToken);
+
+      client.messages
+        .create({
+          body: 'Hello from Node.js!',
+          from: '+15017122661',
+          to: '+15558675310',
+        })
+        .then(message => console.log(message.sid))
         .catch(error => console.error('Error:', error));
     </script>
   </body>
