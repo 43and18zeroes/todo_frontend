@@ -61,17 +61,6 @@
 
       // fetch
 
-      const token = 'your-access-token';
-      const query = 'Beatles';
-
-      fetch(`https://api.spotify.com/v1/search?q=${query}&type=track`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-        .then(response => response.json())
-        .then(data => console.log(data))
-        .catch(error => console.error('Error:', error));
     </script>
   </body>
 </html>
