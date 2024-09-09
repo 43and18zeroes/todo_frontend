@@ -61,6 +61,15 @@
 
       // fetch
 
+      function applyOperation(x, y, operation) {
+        return operation(x, y);
+      }
+
+      function add(x, y) {
+        return x + y;
+      }
+
+      const result = applyOperation(5, 3, add); // 8
     </script>
   </body>
 </html>
