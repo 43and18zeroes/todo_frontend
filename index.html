@@ -61,21 +61,12 @@
 
       // fetch
 
-      function loggingDecorator(target, propertyKey, descriptor) {
-        const originalMethod = descriptor.value;
-        descriptor.value = function (...args) {
-          console.log(`Calling ${propertyKey} with arguments: ${args}`);
-          return originalMethod.apply(this, args);
-        };
-        return descriptor;
+      function add(x, y) {
+        return x + y;
       }
 
-      class MyClass {
-        @loggingDecorator
-        myMethod(x, y) {
-          return x + y;
-        }
-      }
+      const add5 = add.bind(null, 5);
+      const result = add5(3); // 8
     </script>
   </body>
 </html>
