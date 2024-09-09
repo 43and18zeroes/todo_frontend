@@ -61,16 +61,11 @@
 
       // fetch
 
-      function compose(f, g) {
-        return function (x) {
-          return f(g(x));
-        };
-      }
+      const originalArray = [1, 2, 3];
+      const newArray = originalArray.concat([4, 5]);
 
-      const square = x => x * x;
-      const double = x => x * 2;
-      const squareThenDouble = compose(double, square);
-      const result = squareThenDouble(3); // 18
+      console.log(originalArray); // [1, 2, 3]
+      console.log(newArray); // [1, 2, 3, 4, 5]
     </script>
   </body>
 </html>
