@@ -61,15 +61,17 @@
 
       // fetch
 
-      function applyOperation(x, y, operation) {
-        return operation(x, y);
+      function createMultiplier(factor) {
+        return function (x) {
+          return x * factor;
+        };
       }
 
-      function add(x, y) {
-        return x + y;
-      }
+      const double = createMultiplier(2);
+      const triple = createMultiplier(3);
 
-      const result = applyOperation(5, 3, add); // 8
+      const doubledResult = double(5); // 10
+      const tripledResult = triple(5); // 15
     </script>
   </body>
 </html>
