@@ -61,15 +61,15 @@
 
       // fetch
 
-      function factorial(n) {
-        if (n === 0) {
-          return 1;
-        } else {
-          return n * factorial(n - 1);
-        }
+      function fetchData(url) {
+        return new Promise((resolve, reject) => {
+          const xhr = new XMLHttpRequest();
+          xhr.open('GET', url);
+          xhr.onload = () => resolve(xhr.responseText);
+          xhr.onerror = () => reject(new Error('Network error'));
+          xhr.send();
+        });
       }
-
-      const factorialResult = factorial(5); // 120
     </script>
   </body>
 </html>
