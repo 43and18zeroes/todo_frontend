@@ -61,16 +61,21 @@
 
       // fetch
 
-      function* generateNumbers() {
-        let i = 0;
-        while (true) {
-          yield i++;
-        }
+      function loggingDecorator(target, propertyKey, descriptor) {
+        const originalMethod = descriptor.value;
+        descriptor.value = function (...args) {
+          console.log(`Calling ${propertyKey} with arguments: ${args}`);
+          return originalMethod.apply(this, args);
+        };
+        return descriptor;
       }
 
-      const generator = generateNumbers();
-      console.log(generator.next()); // { value: 0, done: false }
-      console.log(generator.next()); // { value: 1, done: false }
+      class MyClass {
+        @loggingDecorator
+        myMethod(x, y) {
+          return x + y;
+        }
+      }
     </script>
   </body>
 </html>
