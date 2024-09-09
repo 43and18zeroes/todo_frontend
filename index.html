@@ -46,26 +46,6 @@
         todoList.innerHTML = '';
         todos.forEach(todo => (todoList.innerHTML += `<li>${todo.title}</li>`));
       }
-
-      const formData = new FormData();
-      formData.append('key1', 'value1');
-      formData.append('key2', 'value2');
-
-      fetch('https://api.example.com/submit', {
-        method: 'POST',
-        body: formData,
-      })
-        .then(response => response.json())
-        .then(data => console.log(data))
-        .catch(error => console.error('Error:', error));
-
-      // fetch
-
-      const originalArray = [1, 2, 3];
-      const newArray = originalArray.concat([4, 5]);
-
-      console.log(originalArray); // [1, 2, 3]
-      console.log(newArray); // [1, 2, 3, 4, 5]
     </script>
   </body>
 </html>
