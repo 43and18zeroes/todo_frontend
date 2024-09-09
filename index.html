@@ -61,18 +61,16 @@
 
       // fetch
 
-      function fetchData(url) {
-        async function fetchDataAsync(url) {
-          try {
-            const response = await fetch(url);
-            const data = await response.json();
-            console.log(data);
-          } catch (error) {
-            console.error(error);
-          }
+      function* generateNumbers() {
+        let i = 0;
+        while (true) {
+          yield i++;
         }
       }
-      fetchDataAsync('https://api.example.com/data');
+
+      const generator = generateNumbers();
+      console.log(generator.next()); // { value: 0, done: false }
+      console.log(generator.next()); // { value: 1, done: false }
     </script>
   </body>
 </html>
