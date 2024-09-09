@@ -61,12 +61,16 @@
 
       // fetch
 
-      function add(x, y) {
-        return x + y;
+      function compose(f, g) {
+        return function (x) {
+          return f(g(x));
+        };
       }
 
-      const add5 = add.bind(null, 5);
-      const result = add5(3); // 8
+      const square = x => x * x;
+      const double = x => x * 2;
+      const squareThenDouble = compose(double, square);
+      const result = squareThenDouble(3); // 18
     </script>
   </body>
 </html>
