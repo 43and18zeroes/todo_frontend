@@ -61,17 +61,15 @@
 
       // fetch
 
-      function createMultiplier(factor) {
-        return function (x) {
-          return x * factor;
-        };
+      function factorial(n) {
+        if (n === 0) {
+          return 1;
+        } else {
+          return n * factorial(n - 1);
+        }
       }
 
-      const double = createMultiplier(2);
-      const triple = createMultiplier(3);
-
-      const doubledResult = double(5); // 10
-      const tripledResult = triple(5); // 15
+      const factorialResult = factorial(5); // 120
     </script>
   </body>
 </html>
