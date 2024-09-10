@@ -47,15 +47,13 @@
         todos.forEach(todo => (todoList.innerHTML += `<li>${todo.title}</li>`));
       }
 
-      function fetchCryptoPrices() {
-        fetch(
-          'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd'
-        )
+      function fetchCountryByName(country) {
+        fetch(`https://restcountries.com/v3.1/name/${country}`)
           .then(response => response.json())
           .then(data => console.log(data))
           .catch(error => console.error('Error:', error));
       }
-      fetchCryptoPrices();
+      fetchCountryByName('Canada');
     </script>
   </body>
 </html>
