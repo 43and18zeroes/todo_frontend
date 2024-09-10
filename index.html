@@ -47,13 +47,13 @@
         todos.forEach(todo => (todoList.innerHTML += `<li>${todo.title}</li>`));
       }
 
-      function fetchCountryByName(country) {
-        fetch(`https://restcountries.com/v3.1/name/${country}`)
+      function fetchRandomJoke() {
+        fetch('https://v2.jokeapi.dev/joke/Any')
           .then(response => response.json())
           .then(data => console.log(data))
           .catch(error => console.error('Error:', error));
       }
-      fetchCountryByName('Canada');
+      fetchRandomJoke();
     </script>
   </body>
 </html>
