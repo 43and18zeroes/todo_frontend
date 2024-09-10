@@ -47,13 +47,13 @@
         todos.forEach(todo => (todoList.innerHTML += `<li>${todo.title}</li>`));
       }
 
-      function fetchPosts() {
-        fetch('https://jsonplaceholder.typicode.com/posts')
+      function fetchPostById(id) {
+        fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
           .then(response => response.json())
           .then(data => console.log(data))
           .catch(error => console.error('Error:', error));
       }
-      fetchPosts();
+      fetchPostById(1);
     </script>
   </body>
 </html>
