@@ -47,13 +47,13 @@
         todos.forEach(todo => (todoList.innerHTML += `<li>${todo.title}</li>`));
       }
 
-      function updatePost(id) {
-        const updatedPost = {
-          title: 'Updated Post',
-          body: 'This is an updated post.',
-          userId: 1,
-        };
+      function fetchGitHubUser(username) {
+        fetch(`https://api.github.com/users/${username}`)
+          .then(response => response.json())
+          .then(data => console.log(data))
+          .catch(error => console.error('Error:', error));
       }
+      fetchGitHubUser('octocat');
     </script>
   </body>
 </html>
