@@ -47,13 +47,25 @@
         todos.forEach(todo => (todoList.innerHTML += `<li>${todo.title}</li>`));
       }
 
-      function fetchPostById(id) {
-        fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
+      function updatePost(id) {
+        const updatedPost = {
+          title: 'Updated Post',
+          body: 'This is an updated post.',
+          userId: 1,
+        };
+
+        fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(updatedPost),
+        })
           .then(response => response.json())
           .then(data => console.log(data))
           .catch(error => console.error('Error:', error));
       }
-      fetchPostById(1);
+      updatePost(1);
     </script>
   </body>
 </html>
