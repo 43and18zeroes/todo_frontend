@@ -47,16 +47,15 @@
         todos.forEach(todo => (todoList.innerHTML += `<li>${todo.title}</li>`));
       }
 
-      function fetchWeather(city) {
-        const apiKey = 'YOUR_API_KEY';
+      function fetchCryptoPrices() {
         fetch(
-          `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`
+          'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd'
         )
           .then(response => response.json())
           .then(data => console.log(data))
           .catch(error => console.error('Error:', error));
       }
-      fetchWeather('London');
+      fetchCryptoPrices();
     </script>
   </body>
 </html>
