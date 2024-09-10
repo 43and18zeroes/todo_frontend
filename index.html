@@ -47,13 +47,16 @@
         todos.forEach(todo => (todoList.innerHTML += `<li>${todo.title}</li>`));
       }
 
-      function fetchGitHubUser(username) {
-        fetch(`https://api.github.com/users/${username}`)
+      function fetchWeather(city) {
+        const apiKey = 'YOUR_API_KEY';
+        fetch(
+          `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`
+        )
           .then(response => response.json())
           .then(data => console.log(data))
           .catch(error => console.error('Error:', error));
       }
-      fetchGitHubUser('octocat');
+      fetchWeather('London');
     </script>
   </body>
 </html>
